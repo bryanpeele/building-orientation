@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+
+
+.picture-header-main {
+    margin-top: 2cm;
+    margin-left: 2cm;
+}
+
+.picture-header {
+    margin-top: 1cm;
+    margin-left: 2cm;
+}
+
+.solar {
+    margin-left: 2cm;
+    transition: all 10s ease 0s;
+}
+
+a:link {
+    color: white; 
+    background-color: transparent; 
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: pink;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+
+#Raleigh {background-color:red;}
+#Archdale {background-color:orange;}
+#Cayuga {background-color:blue;}
+#Lansing {background-color:green;}
+#Bryan {background-color:purple;padding: 20px;}
+
+</style>
+</head>
+<body>
+
+<div id="Raleigh" class="tabcontent">
+  <h1>Building Orientation Indentification</h1>
+  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
+</div>
+
+<div id="Archdale" class="tabcontent">
+  <h1>Building Orientation Indentification</h1>
+  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
+</div>
+
+<div id="Cayuga" class="tabcontent">
+  <h1>Building Orientation Indentification</h1>
+  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
+</div>
+
+<div id="Lansing" class="tabcontent">
+  <h1>Building Orientation Indentification</h1>
+  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
+</div>
+
+<button class="tablink" onclick="openCity('Raleigh', this, 'red',
+				'./data/NorthRaleigh_cropped_800W.png',
+				'./output/SOLAR-PLOT-1NorthRaleigh_cropped_800W.png',
+				'./output/SOLAR-PLOT-2NorthRaleigh_cropped_800W.png',
+				'./output/SOLAR-PLOT-3NorthRaleigh_cropped_800W.png',
+				'./output/SOLAR-PLOT-4NorthRaleigh_cropped_800W.png',
+				'./output/SOLAR-PLOT-5NorthRaleigh_cropped_800W.png')" id="defaultOpen">Raleigh, NC</button>
+<button class="tablink" onclick="openCity('Archdale', this, 'orange',
+				'./data/Archdale_cropped_800W.png',
+				'./output/SOLAR-PLOT-1Archdale_cropped_800W.png',
+				'./output/SOLAR-PLOT-2Archdale_cropped_800W.png',
+				'./output/SOLAR-PLOT-3Archdale_cropped_800W.png',
+				'./output/SOLAR-PLOT-4Archdale_cropped_800W.png',
+				'./output/SOLAR-PLOT-5Archdale_cropped_800W.png')">Archdale, NC</button>
+<button class="tablink" onclick="openCity('Cayuga', this, 'blue',
+				'./data/CayugaHeights_cropped_800W.png',
+				'./output/SOLAR-PLOT-1CayugaHeights_cropped_800W.png',
+				'./output/SOLAR-PLOT-2CayugaHeights_cropped_800W.png',
+				'./output/SOLAR-PLOT-3CayugaHeights_cropped_800W.png',
+				'./output/SOLAR-PLOT-4CayugaHeights_cropped_800W.png',
+				'./output/SOLAR-PLOT-5CayugaHeights_cropped_800W.png')">Cayuga Heights, NY</button>
+<button class="tablink" onclick="openCity('Lansing', this, 'green',
+				'./data/Lansing_cropped_800W.png',
+				'./output/SOLAR-PLOT-1Lansing_cropped_800W.png',
+				'./output/SOLAR-PLOT-2Lansing_cropped_800W.png',
+				'./output/SOLAR-PLOT-3Lansing_cropped_800W.png',
+				'./output/SOLAR-PLOT-4Lansing_cropped_800W.png',
+				'./output/SOLAR-PLOT-5Lansing_cropped_800W.png')">Lansing, MI</button>
+
+<h3 class="picture-header-main">1. Image from Google Maps</h3>
+
+<img class="solar" id="image_1" src="./data/NorthRaleigh_cropped_800W.png" alt="Raw" width="800">
+
+<h3 class="picture-header">2. Threshold to identify buildings</h3>
+
+<img class="solar" id="image_2" src="./output/SOLAR-PLOT-1NorthRaleigh_cropped_800W.png" alt="Threshold" width="800">
+
+<h3 class="picture-header">3. Select contours</h3>
+
+<img class="solar" id="image_3" src="./output/SOLAR-PLOT-2NorthRaleigh_cropped_800W.png" alt="Contours" width="800">
+
+<h3 class="picture-header">4. Fit rectangle</h3>
+
+<img class="solar" id="image_4" src="./output/SOLAR-PLOT-3NorthRaleigh_cropped_800W.png" alt="Rectangles" width="800">
+
+<h3 class="picture-header">5. Find direction of minor axis</h3>
+
+<img class="solar" id="image_5" src="./output/SOLAR-PLOT-4NorthRaleigh_cropped_800W.png" alt="Arrows" width="800">
+
+<h3 class="picture-header">6. Highlight best candidates</h3>
+
+<img class="solar" id="image_6" src="./output/SOLAR-PLOT-5NorthRaleigh_cropped_800W.png" alt="Shaded Selection" width="800">
+
+
+<div id="Bryan" class="tabcontent">
+  <h3>Devolped by Bryan Peele &copy; 2017</h3>
+</div>
+
+<script>
+function openCity(cityName,elmnt,color,src_1,src_2,src_3,src_4,src_5,src_6) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(cityName).style.display = "block";
+    document.getElementById("Bryan").style.display = "block";
+    document.getElementById("Bryan").style.backgroundColor = color;
+    elmnt.style.backgroundColor = color;
+    document.getElementById("image_1").src=src_1;
+    document.getElementById("image_2").src=src_2;
+    document.getElementById("image_3").src=src_3;
+    document.getElementById("image_4").src=src_4;
+    document.getElementById("image_5").src=src_5;
+    document.getElementById("image_6").src=src_6;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+     
+</body>
+</html> 
