@@ -66,9 +66,7 @@ for c in cnts:
 
 	# draw the contour and center of the shape on the image
 	cv2.drawContours(contours, [c], -1, (255, 0, 150), 2)
-	#cv2.circle(image, (cX, cY), 7, (255, 255, 255), -1)
-	#cv2.putText(image, "center", (cX - 20, cY - 20),
-	#	cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+
 
 	rect = cv2.minAreaRect(c)
 	box = cv2.boxPoints(rect)
@@ -107,11 +105,6 @@ for c in cnts:
 	B = int(255*arrow_color.rgb[0])
 
 	cv2.arrowedLine(arrows,center,endpoint,(R,G,B),2,tipLength=0.3)
-
-	#if(int(angle_deg) >(90-solar_range) and int(angle_deg)<(90+solar_range)):
-	#	cv2.arrowedLine(arrows,center,endpoint,(0,255,0),2,tipLength=0.3)
-	#else:
-	#	cv2.arrowedLine(arrows,center,endpoint,(255,0,0),2,tipLength=0.3)
 
 	if(int(angle_deg) >(90-solar_range) and int(angle_deg)<(90+solar_range)):
 		cv2.drawContours(shaded, [c], 0, (100, 220, 100), -1)
