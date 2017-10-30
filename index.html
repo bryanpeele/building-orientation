@@ -29,14 +29,23 @@ body {font-family: "Lato", sans-serif;}
 }
 
 
-.picture-header-main {
+.main {
     margin-top: 2cm;
     margin-left: 2cm;
+    margin-right: 2cm;
 }
 
 .picture-header {
     margin-top: 1cm;
     margin-left: 2cm;
+    margin-right: 2cm;
+}
+
+
+.explanations {
+    margin-left: 2cm;
+    margin-right: 2cm;
+    width: 800px;
 }
 
 .solar {
@@ -45,19 +54,19 @@ body {font-family: "Lato", sans-serif;}
 }
 
 a:link {
-    color: white; 
+    color: black; 
     background-color: transparent; 
     text-decoration: none;
 }
 
 a:visited {
-    color: white;
+    color: grey;
     background-color: transparent;
     text-decoration: none;
 }
 
 a:hover {
-    color: pink;
+    color: purple;
     background-color: transparent;
     text-decoration: underline;
 }
@@ -81,22 +90,18 @@ a:active {
 
 <div id="Raleigh" class="tabcontent">
   <h1>Building Orientation Indentification</h1>
-  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
 </div>
 
 <div id="Archdale" class="tabcontent">
   <h1>Building Orientation Indentification</h1>
-  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
 </div>
 
 <div id="Cayuga" class="tabcontent">
   <h1>Building Orientation Indentification</h1>
-  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
 </div>
 
 <div id="Lansing" class="tabcontent">
   <h1>Building Orientation Indentification</h1>
-  <h3>Code available at: <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a></h3>
 </div>
 
 <button class="tablink" onclick="openCity('Raleigh', this, 'red',
@@ -128,27 +133,35 @@ a:active {
 				'./output/SOLAR-PLOT-4Lansing_cropped_800W.png',
 				'./output/SOLAR-PLOT-5Lansing_cropped_800W.png')">Lansing, MI</button>
 
-<h3 class="picture-header-main">1. Image from Google Maps</h3>
+<p class="main">Solar panels are most effective and provide the best return on investment when aimed towards the equator (e.g., facing true south for those of us in the Northern Hemisphere). For residential buildings with pitched roofs, the easiest, cheapest and most elegant mounting method is to align the panels with the roof. Therefore, homes with roofs facing nort-south are the best candidates for the addition of solar panels. For solar energy providers, these are the ideal customers for direct marketing campaigns. A personalized proposal could be generate by combining the orientation of each building with available roof area and local, historic solar insolation data for to estimate annual energy production. This page shows representative output from an automated tool to identify these homes. The code used to generate these images can be found at <a href="https://github.com/bryanpeele/building-orientation">https://github.com/bryanpeele/building-orientation</a> Output for four different neighborhoods can be selected by clicking the tabs above.</p>
+
+<h3 class="picture-header">1. Raw image from Google Maps</h3>
+<p class="explanations">For this prototype, static images with clear building outlines are obtained from Google Maps. For future iterations, a more comprehensive tool could be developed using the Google Maps API. </p>
 
 <img class="solar" id="image_1" src="./data/NorthRaleigh_cropped_800W.png" alt="Raw" width="800">
 
 <h3 class="picture-header">2. Threshold to identify buildings</h3>
+<p class="explanations">After the raw image has been selected, a threshold is applied based on color to identify buildings. </p>
 
 <img class="solar" id="image_2" src="./output/SOLAR-PLOT-1NorthRaleigh_cropped_800W.png" alt="Threshold" width="800">
 
-<h3 class="picture-header">3. Select contours</h3>
+<h3 class="picture-header">3. Contour selection</h3>
+<p class="explanations">From this thresholded image, buildings are identified with contours shown in purple. A minimum area is specified by the user to remove noise present in the thresholded image.</p>
 
 <img class="solar" id="image_3" src="./output/SOLAR-PLOT-2NorthRaleigh_cropped_800W.png" alt="Contours" width="800">
 
-<h3 class="picture-header">4. Fit rectangle</h3>
+<h3 class="picture-header">4. Fitting a rectangle to each building</h3>
+<p class="explanations">For each of the contours, a rectangle is fit to best approximate the shape of the building. For complex building shapes (e.g., L-shaped), a more sophisticated fitting method would improve results.</p>
 
 <img class="solar" id="image_4" src="./output/SOLAR-PLOT-3NorthRaleigh_cropped_800W.png" alt="Rectangles" width="800">
 
-<h3 class="picture-header">5. Find direction of minor axis</h3>
+<h3 class="picture-header">5. Identifying direction with most solar exposure</h3>
+<p class="explanations">An arrow is drawn along the minor axis of the rectangle, facing as close to true south as possible. Buildings facing true south are shown with red arrows. Yellow arrows are used for buildings least suited for solar energy collection.</p>
 
 <img class="solar" id="image_5" src="./output/SOLAR-PLOT-4NorthRaleigh_cropped_800W.png" alt="Arrows" width="800">
 
-<h3 class="picture-header">6. Highlight best candidates</h3>
+<h3 class="picture-header">6. Identification of best candidates</h3>
+<p class="explanations">Finally, the buildings with the potential to product the most solar energy are highlighted in green. In this case, building facing within 30&deg; are selected.</p>
 
 <img class="solar" id="image_6" src="./output/SOLAR-PLOT-5NorthRaleigh_cropped_800W.png" alt="Shaded Selection" width="800">
 
